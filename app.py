@@ -16,9 +16,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION']= False
 app.secret_key = 'gerdin'
 api = Api(app)
 
-@app.before_first_request # this method is runned before the first request into this app
-def create_tables():
-    db.create_all()
 
 
 # JWT creates a new endpoint (= /auth), JWT gets the username and password
