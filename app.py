@@ -1,4 +1,5 @@
 # CREATING A FLASK-RESTFULL APP
+import os
 
 from flask import Flask
 from flask_restful import Api
@@ -11,7 +12,7 @@ from resources.store import Store, StoreList
 
 app = Flask(__name__)
 # SQLALCHEMY also work on PostgresSQL and NOSQL with only changing this setting
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATION']= False
 app.secret_key = 'gerdin'
 api = Api(app)
